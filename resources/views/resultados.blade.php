@@ -1,19 +1,24 @@
 @extends('app')
 
 @section('content')
-    <div>
+    <!-- Spinner de carga -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Contenido principal -->
+    <div id="main-content" style="display: none;">
         <div class="text-center m-4">
             <h1>Coincidencias encontradas</h1>
         </div>
+
         <div class="results-container">
             @forelse ($resultados as $resultado)
                 <div class="result-card">
                     <!-- Imagen / Ícono -->
                     <div class="image-box">
-                        <!-- Ajusta la ruta de la imagen a tu preferencia -->
                         @php
                             if ($showfotos) {
-                                # code...
                                 $imagen = DB::table('v_imagen')->where('Folio', $resultado->Folio)->value('Foto');
                             }
                         @endphp
@@ -21,7 +26,8 @@
                         @if ($showfotos)
                             <div class="image-box">
                                 @if ($imagen)
-                                    <img src="data:image/jpeg;base64,{{ base64_encode($imagen) }}" alt="Imagen del resultado">
+                                    <img src="data:image/jpeg;base64,{{ base64_encode($imagen) }}"
+                                        alt="Imagen del resultado">
                                 @else
                                     <img src="{{ asset('default.png') }}" alt="Imagen no disponible">
                                 @endif
@@ -32,13 +38,13 @@
                             </div>
                         @endif
                     </div>
+
                     <!-- Información -->
                     <div class="info-box">
                         <p><strong>Número de folio:</strong> {{ $resultado->nombre }}</p>
                         <p><strong>Edad:</strong> {{ $resultado->Edad }}</p>
                         <p><strong>Sexo:</strong> {{ $resultado->nomSexo }}</p>
                         <p><strong>Fecha de hallazgo:</strong> {{ $resultado->Fecha }}</p>
-                        <!-- Ajusta la ruta del botón "Ver ficha completa" -->
                         <a href="#" class="btn-completa" disabled>Ver ficha completa</a>
                     </div>
                 </div>
@@ -52,6 +58,14 @@
             {{ $resultados->appends(request()->query())->links('pagination::bootstrap-5') }}
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Oculta el spinner y muestra el contenido cuando la página ha cargado completamente
+            document.getElementById("loading-screen").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+        });
+    </script>
 
     <style>
         /* Contenedor principal en formato grid 2x2 */
@@ -169,6 +183,38 @@
 
             .image-box {
                 width: 100%;
+            }
+        }
+
+        /* Spinner de carga */
+        #loading-screen {
+            position: fixed;
+            width: 100%;
+            height: calc(100vh - 130px);
+            background-color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        /* Animación del Spinner */
+        .spinner {
+            border: 5px solid #ccc;
+            border-top: 5px solid #334d75;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
             }
         }
     </style>
