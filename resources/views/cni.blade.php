@@ -17,7 +17,7 @@
                     <!-- Sección de imágenes -->
                     @php
                         if ($showfotos) {
-                            $imagenes = DB::table('v_imagen')->where('Folio', $id)->pluck('Foto');
+                            $imagenes = DB::table('SEMEFOIMAGENES')->where('Folio', $id)->pluck('Foto');
                         }
                     @endphp
 

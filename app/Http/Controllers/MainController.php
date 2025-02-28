@@ -17,12 +17,11 @@ class MainController extends Controller
         // Consulta a la vista (reemplaza 'nombre_de_la_vista' por el nombre real de la vista en tu BD)
         $query = DB::table('BUSCAROCCISO');
 
-        // Agregar condiciones dinámicamente solo para los campos que tienen valor
         if ($request->filled('edad')) {
-            $query->where('Edad', $request->input('edad'));
+            $query->Orwhere('Edad', $request->input('edad'));
         }
         if ($request->filled('folio')) {
-            $query->where('Folio', $request->input('folio'));
+            $query->where('nombre', 'like', '%' . $request->input('folio') . '%');
         }
         if ($request->filled('genero')) {
             $query->where('nomSexo', $request->input('genero'));
@@ -37,11 +36,12 @@ class MainController extends Controller
             $query->where('Materno', 'like', '%' . $request->input('materno') . '%');
         }
         if ($request->filled('anio')) {
-            $query->whereYear('Fecha', 'like', '%' . $request->input('anio'));
+            $query->whereYear('Fecha', $request->input('anio'));
         }
         if ($request->filled('mes')) {
-            $query->whereMonth('Fecha', 'like', $request->input('mes')) . '%';
+            $query->whereMonth('Fecha', $request->input('mes'));
         }
+
         // Lógica para "Mostrar fotografías": si se envía, se filtra por 1 (Sí) o 0 (No)
         if ($request->input('mostrar-fotos') == '1') {
             $showfotos = true;
