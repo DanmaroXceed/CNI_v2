@@ -49,15 +49,15 @@
                 </div>
 
                 <div class="column-2-body">
-                    <p><strong>Fecha de levantamiento:</strong> {{ $fechaLevantamiento ?? '1 Noviembre 2024' }}</p>
-                    <p><strong>Hora de levantamiento:</strong> </p>
-                    <p><strong>Expediente:</strong> </p>
-                    <p><strong>Lugar de intervención:</strong> </p>
-                    <p><strong>Municipio:</strong> </p>
-                    <p><strong>Estado que reportó:</strong> </p>
-                    <p><strong>Señas particulares:</strong> </p>
-                    <p><strong>Observaciones:</strong> </p>
-                    <p><strong>Pertenencias y accesorios:</strong> </p>
+                    <p><strong>Fecha de levantamiento:</strong> {{ $datos[0]->fecha ?? 'no especificado' }}</p>
+                    <p><strong>Hora de levantamiento:</strong> {{ $datos[0]->hora ?? 'no especificado' }}</p>
+                    <p><strong>Expediente:</strong> {{ $datos[0]->expediente ?? 'no especificado' }}</p>
+                    <p><strong>Lugar de intervención:</strong> {{ $datos[0]->intervencion ?? 'no especificado' }}</p>
+                    <p><strong>Municipio:</strong> {{ $datos[0]->municipio ?? 'no especificado' }}</p>
+                    <p><strong>Estado que reportó:</strong> Zacatecas</p>
+                    <p><strong>Señas particulares:</strong> {{ $datos[0]->señas ?? 'no especificado' }}</p>
+                    <p><strong>Observaciones:</strong> {{ $datos[0]->observaciones ?? 'no especificado' }}</p>
+                    <p><strong>Pertenencias y accesorios:</strong> {{ $datos[0]->pertenencias ?? 'no especificado' }}</p>
                 </div>
 
                 <div class="column-2-footer">
@@ -77,33 +77,154 @@
                     <h2 style="color: #142355; margin-bottom: 10px"><strong>Señales particulares</strong></h2>
                     <div class="two-columns">
                         <div class="column-left">
-                            <p><strong>PESO:</strong> </p>
-                            <p><strong>ESTATURA:</strong> </p>
-                            <p><strong>TEZ/PIEL:</strong> </p>
-                            <p><strong>COMPLEXIÓN:</strong> </p>
-                            <p><strong>FORMA CARA:</strong> </p>
-                            <p><strong>FRENTE:</strong> </p>
-                            <p><strong>BARBA:</strong> </p>
-                            <p><strong>ANTEOJOS:</strong> </p>
-                            <p><strong>MENTÓN:</strong> </p>
-                            <p><strong>MENTÓN FORMA:</strong> </p>
-                            <p><strong>NARIZ:</strong> </p>
-                            <p><strong>TAMAÑO NARIZ:</strong> </p>
+                            <p>
+                                <strong>PESO:</strong>
+                                <span style="color: {{ !empty($senas[0]->peso) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->peso ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>ESTATURA:</strong>
+                                <span style="color: {{ !empty($senas[0]->estatura) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->estatura ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>TEZ/PIEL:</strong>
+                                <span style="color: {{ !empty($senas[0]->tez) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->tez ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>COMPLEXIÓN:</strong>
+                                <span style="color: {{ !empty($senas[0]->complexion) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->complexion ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>FORMA CARA:</strong>
+                                <span style="color: {{ !empty($senas[0]->formacara) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->formacara ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>FRENTE:</strong>
+                                <span style="color: {{ !empty($senas[0]->frente) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->frente ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>BARBA:</strong>
+                                <span style="color: {{ !empty($senas[0]->barba) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->barba ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>ANTEOJOS:</strong>
+                                <span style="color: {{ !empty($senas[0]->anteojos) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->anteojos ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>MENTÓN:</strong>
+                                <span style="color: {{ !empty($senas[0]->menton) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->menton ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>MENTÓN FORMA:</strong>
+                                <span style="color: {{ !empty($senas[0]->mentonforma) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->mentonforma ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>NARIZ:</strong>
+                                <span style="color: {{ !empty($senas[0]->nariz) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->nariz ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>TAMAÑO NARIZ:</strong>
+                                <span style="color: {{ !empty($senas[0]->tamnariz) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->tamnariz ?? 'no especificado' }}
+                                </span>
+                            </p>
                         </div>
                         <div class="column-right">
-                            <p><strong>BOCA TAMAÑO:</strong> </p>
-                            <p><strong>GROSOR LABIOS:</strong> </p>
-                            <p><strong>TIPO CEJAS:</strong> </p>
-                            <p><strong>TAMAÑO CEJAS:</strong> </p>
-                            <p><strong>FORMA OREJAS:</strong> </p>
-                            <p><strong>TAMAÑO OREJAS:</strong> </p>
-                            <p><strong>COLOR CABELLO:</strong> </p>
-                            <p><strong>FORMA CABELLO:</strong> </p>
-                            <p><strong>COLOR OJOS:</strong> </p>
-                            <p><strong>TAMAÑO OJOS:</strong> </p>
-                            <p><strong>LARGO CABELLO:</strong> </p>
-                            <p><strong>SEÑAS PARTICULARES:</strong> </p>
+                            <p>
+                                <strong>BOCA TAMAÑO:</strong>
+                                <span style="color: {{ !empty($senas[0]->tamboca) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->tamboca ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>GROSOR LABIOS:</strong>
+                                <span style="color: {{ !empty($senas[0]->grosorlabios) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->grosorlabios ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>TIPO CEJAS:</strong>
+                                <span style="color: {{ !empty($senas[0]->tipocejas) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->tipocejas ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>TAMAÑO CEJAS:</strong>
+                                <span style="color: {{ !empty($senas[0]->tamcejas) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->tamcejas ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>FORMA OREJAS:</strong>
+                                <span style="color: {{ !empty($senas[0]->formorejas) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->formorejas ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>TAMAÑO OREJAS:</strong>
+                                <span style="color: {{ !empty($senas[0]->tamorejas) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->tamorejas ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>COLOR CABELLO:</strong>
+                                <span style="color: {{ !empty($senas[0]->colorcabello) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->colorcabello ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>FORMA CABELLO:</strong>
+                                <span style="color: {{ !empty($senas[0]->formacabello) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->formacabello ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>LARGO CABELLO:</strong>
+                                <span style="color: {{ !empty($senas[0]->largocabello) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->largocabello ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>COLOR OJOS:</strong>
+                                <span style="color: {{ !empty($senas[0]->colorojos) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->colorojos ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>TAMAÑO OJOS:</strong>
+                                <span style="color: {{ !empty($senas[0]->tamojos) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->tamojos ?? 'no especificado' }}
+                                </span>
+                            </p>
+                            <p>
+                                <strong>SEÑAS PARTICULARES:</strong>
+                                <span style="color: {{ !empty($senas[0]->señas) ? '#324E75' : '#8C8C8C' }}">
+                                    {{ $senas[0]->señas ?? 'no especificado' }}
+                                </span>
+                            </p>
                         </div>
+
                     </div>
                 </div>
                 <div class="column-3-footer">
