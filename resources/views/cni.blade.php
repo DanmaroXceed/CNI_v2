@@ -9,7 +9,7 @@
     <div class="main-container" id="main-content">
         <!-- Imágenes fijas en la esquina superior derecha -->
         <div class="header-logos">
-            <img src="{{ asset('Logo de la DGSP.png') }}" alt="Logo 1">
+            <img src="{{ asset('Logo de la DGSP.PNG') }}" alt="Logo 1">
             <img src="{{ asset('Logo de la FGJEZ.png') }}" alt="Logo 2">
         </div>
 
