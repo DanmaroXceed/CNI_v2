@@ -1,7 +1,12 @@
 @extends('app')
 
 @section('content')
-    <div class="main-container">
+    <!-- Spinner de carga -->
+    <div id="loading-screen">
+        <div class="spinner"></div>
+    </div>
+
+    <div class="main-container" id="main-content">
         <!-- Imágenes fijas en la esquina superior derecha -->
         <div class="header-logos">
             <img src="{{ asset('Logo de la DGSP.png') }}" alt="Logo 1">
@@ -16,29 +21,34 @@
                 <div class="carousel-container">
                     <!-- Sección de imágenes -->
                     @php
+                        $imagenes = [];
                         if ($showfotos) {
                             $imagenes = DB::table('SEMEFOIMAGENES')->where('Folio', $id)->pluck('Foto');
                         }
                     @endphp
 
                     <div class="carousel-images">
-                        @if ($showfotos)
-                            @forelse ($imagenes as $img)
-                                <!-- Si tienes que mostrar varbinary base64, haz: -->
-                                <img src="data:image/jpeg;base64,{{ base64_encode($img) }}" alt="Foto CNI">
-                            @empty
-                                <p>No hay fotografías</p>
-                            @endforelse
+                        @if ($showfotos && count($imagenes) > 0)
+                            @foreach ($imagenes as $index => $img)
+                                <img src="data:image/jpeg;base64,{{ base64_encode($img) }}" alt="Foto CNI"
+                                    class="carousel-img" style="{{ $index === 0 ? 'display: block;' : 'display: none;' }}">
+                            @endforeach
                         @else
                             <img src="{{ asset('ícono.png') }}" alt="Imagen no disponible">
                         @endif
                     </div>
 
                     <!-- Botones de navegación -->
-                    <div class="carousel-buttons">
-                        <button>Anterior</button>
-                        <button>Siguiente</button>
-                    </div>
+                    @if ($showfotos && count($imagenes) > 1)
+                        <div class="carousel-buttons">
+                            <button id="prevBtn" class="btn-prev">
+                                <span class="arrow-left">‹</span> Previa
+                            </button>
+                            <button id="nextBtn" class="btn-next">
+                                Siguiente <span class="arrow-right">›</span>
+                            </button>
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -236,11 +246,34 @@
         </div>
     </div>
 
-    <!-- Ejemplo de botones en la parte inferior (Opcional) -->
     <div class="bottom-buttons">
-        <button style="background-color: white; color: black;">Regresar</button>
+        <button style="background-color: white; color: black;" onclick="window.history.back()">Regresar</button>
         <button>Descargar</button>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("loading-screen").style.display = "none";
+            document.getElementById("main-content").style.display = "block";
+
+            let images = document.querySelectorAll(".carousel-img");
+            let currentIndex = 0;
+
+            if (images.length > 0) {
+                document.getElementById("prevBtn").addEventListener("click", function() {
+                    images[currentIndex].style.display = "none";
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    images[currentIndex].style.display = "block";
+                });
+
+                document.getElementById("nextBtn").addEventListener("click", function() {
+                    images[currentIndex].style.display = "none";
+                    currentIndex = (currentIndex + 1) % images.length;
+                    images[currentIndex].style.display = "block";
+                });
+            }
+        });
+    </script>
 
     <style>
         /* Contenedor principal */
@@ -330,21 +363,46 @@
 
         .carousel-buttons {
             display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
+            justify-content: space-evenly;
         }
 
         .carousel-buttons button {
-            padding: 8px 12px;
-            background-color: #334d75;
-            color: #fff;
-            border: none;
-            border-radius: 4px;
+            padding: 10px 16px;
+            font-size: .8rem;
+            font-weight: bold;
             cursor: pointer;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            /* Espacio entre el texto y la flecha */
+            gap: 6px;
         }
 
-        .carousel-buttons button:hover {
-            background-color: #2b3f5b;
+        .btn-prev {
+            background-color: white;
+            color: black;
+            border: 2px solid black;
+        }
+
+        .btn-prev:hover {
+            background-color: #f0f0f0;
+        }
+
+        .btn-next {
+            background-color: black;
+            color: white;
+            border: none;
+        }
+
+        .btn-next:hover {
+            background-color: #333;
+        }
+
+        /* Ajuste para las flechas */
+        .arrow-left,
+        .arrow-right {
+            font-size: 18px;
+            font-weight: bold;
         }
 
         /* ==== Columna 2: Folio y datos ==== */

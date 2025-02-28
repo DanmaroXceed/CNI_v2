@@ -18,7 +18,7 @@ class MainController extends Controller
         $query = DB::table('BUSCAROCCISO');
 
         if ($request->filled('edad')) {
-            $query->Orwhere('Edad', $request->input('edad'));
+            $query->where('Edad', $request->input('edad'));
         }
         if ($request->filled('folio')) {
             $query->where('nombre', 'like', '%' . $request->input('folio') . '%');
