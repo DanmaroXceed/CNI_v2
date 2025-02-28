@@ -57,4 +57,12 @@ class MainController extends Controller
 
         // dd($resultados);
     }
+
+    public function cni(Request $request)
+    {
+        $showfotos = $request->query('showfotos'); 
+        $id = $request->query('id'); 
+    
+        return view('cni', compact('showfotos', 'id'));
+    }
 }

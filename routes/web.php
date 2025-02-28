@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::get('/buscar', [MainController::class, 'buscar'])->name('buscar');
 Route::get('/resultados', [MainController::class, 'busqueda'])->name('resultados');
+Route::get('/cni', [MainController::class, 'cni'])->name('cni');

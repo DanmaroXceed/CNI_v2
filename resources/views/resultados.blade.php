@@ -42,7 +42,7 @@
                         <p><strong>Edad:</strong> <span class="blue-text">{{ $resultado->Edad }}</span></p>
                         <p><strong>Sexo:</strong> <span class="blue-text">{{ $resultado->nomSexo }}</span></p>
                         <p><strong>Fecha de hallazgo:</strong> <span class="blue-text">{{ $resultado->Fecha }}</span></p>
-                        <a href="{{ route('cni') }}" class="btn-completa">Ver ficha completa</a>
+                        <a href="{{ route('cni', ['showfotos' => $showfotos,'id' => $resultado->Folio]) }}" class="btn-completa">Ver ficha completa</a>
                     </div>
                 </div>
             @empty
@@ -204,6 +204,10 @@
             100% {
                 transform: rotate(360deg);
             }
+        }
+
+        .text-muted{
+            margin-right: 10px;
         }
     </style>
 @endsection
