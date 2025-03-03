@@ -31,12 +31,12 @@
                 </p>
 
                 <!-- Mensaje secundario -->
-                <p class="form-header">
+                {{-- <p class="form-header">
                     Por favor seleccione datos mínimos para iniciar la búsqueda
-                </p>
-                <p class="form-subheader">
+                </p> --}}
+                {{-- <p class="form-subheader">
                     (Edad aproximada y sexo)
-                </p>
+                </p> --}}
 
                 <!-- Fila: Folio y Edad -->
                 <div class="form-row">
@@ -44,21 +44,22 @@
                         <label for="folio">Folio</label>
                         <input type="text" id="folio" name="folio" />
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <label for="edad">Edad <span style="color: red">*<span></label>
                         <input type="number" id="edad" name="edad" required />
                         <span class="error-message" id="edadError">Este campo es obligatorio</span>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <!-- Fila: Género (Radio) -->
+                <label for="radio-group" style="margin-bottom: 7px">Sexo<span style="color: red">*<span></label>
                 <div class="form-row">
                     <div class="radio-group left-align">
                         <input type="radio" id="femenino" name="genero" value="Femenino" required />
                         <label for="femenino">Femenino</label>
                     </div>
                     <div class="radio-group center-align">
-                        <input type="radio" id="masculino" name="genero" value="Masculino" />
+                        <input type="radio" id="masculino" name="genero" value="Masculino" checked/>
                         <label for="masculino">Masculino</label>
                     </div>
                 </div>

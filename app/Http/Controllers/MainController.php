@@ -14,12 +14,12 @@ class MainController extends Controller
 
     public function busqueda(Request $request)
     {
-        // Consulta a la vista (reemplaza 'nombre_de_la_vista' por el nombre real de la vista en tu BD)
+        // Consulta a la vista
         $query = DB::table('BUSCAROCCISO');
 
-        if ($request->filled('edad')) {
-            $query->where('Edad', $request->input('edad'));
-        }
+        // if ($request->filled('edad')) {
+        //     $query->where('Edad', $request->input('edad'));
+        // }
         if ($request->filled('folio')) {
             $query->where('nombre', 'like', '%' . $request->input('folio') . '%');
         }
@@ -36,10 +36,10 @@ class MainController extends Controller
             $query->where('Materno', 'like', '%' . $request->input('materno') . '%');
         }
         if ($request->filled('anio')) {
-            $query->whereYear('Fecha', $request->input('anio'));
+            $query->whereRaw("YEAR(TRY_CAST(REPLACE(REPLACE(REPLACE(REPLACE(Fecha, 'Ene', 'Jan'), 'Abr', 'Apr'), 'Ago', 'Aug'), 'Dic', 'Dec') AS datetime)) = ?", [$request->input('anio')]);
         }
         if ($request->filled('mes')) {
-            $query->whereMonth('Fecha', $request->input('mes'));
+            $query->whereRaw("MONTH(TRY_CAST(REPLACE(REPLACE(REPLACE(REPLACE(Fecha, 'Ene', 'Jan'), 'Abr', 'Apr'), 'Ago', 'Aug'), 'Dic', 'Dec') AS datetime)) = ?", [$request->input('mes')]);
         }
 
         // Lógica para "Mostrar fotografías": si se envía, se filtra por 1 (Sí) o 0 (No)
@@ -48,6 +48,8 @@ class MainController extends Controller
         } else {
             $showfotos = false;
         }
+
+        $query->orderByRaw("TRY_CAST(REPLACE(REPLACE(REPLACE(REPLACE(LTRIM(RTRIM(Fecha)), 'Ene', 'Jan'), 'Abr', 'Apr'), 'Ago', 'Aug'), 'Dic', 'Dec') AS datetime) DESC");
 
         // Obtener el conjunto de registros que cumplan con los filtros
         $resultados = $query->paginate(4);
@@ -64,7 +66,7 @@ class MainController extends Controller
         $id = $request->query('id');
 
         $sql1 = "
-            SELECT 
+            SELECT
                 CAST(T0.Fecha AS date) AS fecha,
                 CAST(T0.Fecha AS time) AS hora,
                 T0.Averiguacion as expediente,
@@ -93,25 +95,25 @@ class MainController extends Controller
                 T5.DESCR as barba,
                 T6.IdAnteojos as anteojos,
                 T7.DESCR as menton,
-                (SELECT cm.descripcion 
-                    FROM MEDIAFILIACIONSEMEFO m 
-                    INNER JOIN CAT_MEDFIL cm on m.MENTONFORMA = cm.LLAVE_TIPO 
+                (SELECT cm.descripcion
+                    FROM MEDIAFILIACIONSEMEFO m
+                    INNER JOIN CAT_MEDFIL cm on m.MENTONFORMA = cm.LLAVE_TIPO
                     WHERE cm.LLAVE = 25 and m.FOLIO = {$id}) as mentonforma,
                 T8.DESCR as nariz,
-                (SELECT cm.descripcion 
-                    FROM MEDIAFILIACIONSEMEFO m 
-                    INNER JOIN CAT_MEDFIL cm on m.TAMAÑONARIZ = cm.LLAVE_TIPO 
+                (SELECT cm.descripcion
+                    FROM MEDIAFILIACIONSEMEFO m
+                    INNER JOIN CAT_MEDFIL cm on m.TAMAÑONARIZ = cm.LLAVE_TIPO
                     WHERE cm.LLAVE = 6 and m.FOLIO = {$id}) as tamnariz,
                 T9.DESCR as tamboca,
                 T10.DESCR as grosorlabios,
                 (SELECT cm.descripcion
-                    FROM MEDIAFILIACIONSEMEFO m 
-                    INNER JOIN CAT_MEDFIL cm on m.TIPOCEJA = cm.LLAVE_TIPO 
+                    FROM MEDIAFILIACIONSEMEFO m
+                    INNER JOIN CAT_MEDFIL cm on m.TIPOCEJA = cm.LLAVE_TIPO
                     WHERE cm.LLAVE = 14 and m.FOLIO = {$id}) as tipocejas,
                 T11.DESCR as tamcejas,
                 (SELECT cm.descripcion
-                    FROM MEDIAFILIACIONSEMEFO m 
-                    INNER JOIN CAT_MEDFIL cm on m.TAMAÑOOREJAS = cm.LLAVE_TIPO 
+                    FROM MEDIAFILIACIONSEMEFO m
+                    INNER JOIN CAT_MEDFIL cm on m.TAMAÑOOREJAS = cm.LLAVE_TIPO
                     WHERE cm.LLAVE = 47 and m.FOLIO = {$id}) as tamorejas,
                 T12.DESCR as formorejas,
                 T13.DESCR as colorcabello,
@@ -138,7 +140,7 @@ class MainController extends Controller
                 LEFT JOIN CABELLO T14 on T0.FORMACABELLO = T14.CABELLO
                 LEFT JOIN Cabello_Tamaño T15 on T0.LARGOCABELLO = T15.CveTamCabello
                 LEFT JOIN COLOR_OJOS T16 on T0.COLOROJOS = T16.COLOR_OJOS
-                LEFT JOIN OJOS T17 on T0.TAMAÑOOJOS = T17.OJOS 
+                LEFT JOIN OJOS T17 on T0.TAMAÑOOJOS = T17.OJOS
                 LEFT JOIN Señas_Particulares T18 ON T0.SEÑASPARTICULARES = T18.CveSeñasParticulares
             WHERE
                 T0.FOLIO = {$id}
