@@ -9,7 +9,7 @@
     <div class="main-container" id="main-content">
         <!-- Imágenes fijas en la esquina superior derecha -->
         <div class="header-logos">
-            <img src="{{ asset('Logo de la DGSP.PNG') }}" alt="Logo 1">
+            <img src="{{ asset('Logo de la DGSP.PNG') }}" alt="Logo 1" id="logo1">
             <img src="{{ asset('Logo de la FGJEZ.png') }}" alt="Logo 2">
         </div>
 
@@ -55,7 +55,7 @@
             <!-- Columna 2: Folio y datos -->
             <div class="column">
                 <div class="column-2-header text-center">
-                    <h1><strong>FOLIO: <span>{{ $folio ?? 'CNI 312 ZAC 2024 N N' }}</span></strong></h1>
+                    <h1><strong>FOLIO: <span>{{ $datos[0]->folio }}</span></strong></h1>
                 </div>
 
                 <div class="column-2-body">
@@ -290,16 +290,20 @@
         /* Imágenes fijas en la esquina superior derecha */
         .header-logos {
             position: absolute;
-            top: 20px;
-            right: 20px;
+            top: 30px;
+            right: 30px;
             display: flex;
             gap: 10px;
         }
 
         .header-logos img {
             /* Ajusta según necesites */
-            width: 100px;
+            width: 130px;
             height: auto;
+        }
+
+        .header-logos #logo1{
+            width: 170px;
         }
 
         /* Contenedor de las 3 columnas */
@@ -442,7 +446,8 @@
         .column-3-body {
             /* Ocupa el espacio disponible */
             flex: 1;
-            padding: 50px;
+            padding: 30px;
+            margin-top: 50px;
             margin-bottom: 10px;
             background-color: #f5f5ff;
             border-radius: 20px;

@@ -67,6 +67,7 @@ class MainController extends Controller
 
         $sql1 = "
             SELECT
+                T0.Nombre as folio,
                 CAST(T0.Fecha AS date) AS fecha,
                 CAST(T0.Fecha AS time) AS hora,
                 T0.Averiguacion as expediente,

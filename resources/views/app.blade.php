@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>CNI - Semefo</title>
 </head>
+
 <body class="bg-custom">
     <nav class="navbar">
         <img src="{{ asset('logo.png') }}" alt="Logo" class="navbar-logo">
@@ -14,6 +17,24 @@
             <button>☰</button>
         </div>
     </nav>
+
+    @if (request()->routeIs('resultados') || request()->routeIs('cni'))
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{{ route('buscar') }}">Búsqueda</a></li>
+
+                @if (request()->routeIs('resultados'))
+                    <li class="breadcrumb-item active" aria-current="page">Resultados</li>
+                @endif
+
+                @if (request()->routeIs('cni'))
+                    <li class="breadcrumb-item"><a href="{{ redirect()->getUrlGenerator()->previous() }}">Resultados</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria-current="page">Cédula</li>
+                @endif
+            </ol>
+        </nav>
+    @endif
 
     <div id="contenido">
         @yield('content')
@@ -69,8 +90,10 @@
 
     /* CONTENIDO */
     #contenido {
-        min-height: calc(100vh - 130px); /* Altura total menos el navbar y el footer */
-        padding-bottom: 100px; /* Espacio extra para evitar que el botón se oculte */
+        /* Altura total menos el navbar y el footer */
+        min-height: calc(100vh - 130px);
+        /* Espacio extra para evitar que el botón se oculte */
+        padding-bottom: 100px;
     }
 
     /* FOOTER RESPONSIVO */
@@ -91,7 +114,8 @@
 
     @media (max-width: 768px) {
         .footer {
-            position: relative; /* Evita que se superponga en pantallas pequeñas */
+            /* Evita que se superponga en pantallas pequeñas */
+            position: relative;
             height: auto;
             padding: 15px;
             text-align: center;
@@ -101,7 +125,8 @@
     /* ESTILOS PARA EL BOTÓN */
     .btn-custom {
         display: block;
-        margin: 20px auto; /* Centra el botón */
+        /* Centra el botón */
+        margin: 20px auto;
         padding: 10px 20px;
         border-radius: 20px;
         font-size: 16px;
@@ -109,7 +134,8 @@
         color: white;
         border: none;
         cursor: pointer;
-        width: 200px; /* Tamaño adecuado */
+        /* Tamaño adecuado */
+        width: 200px;
     }
 
     .btn-custom:hover {
@@ -118,10 +144,30 @@
 
     @media (max-width: 600px) {
         .btn-custom {
-            width: 80%; /* Ocupa más espacio en móviles */
+            /* Ocupa más espacio en móviles */
+            width: 80%;
         }
     }
 
+    .breadcrumb {
+        margin-top: 20px;
+        margin-left: 40px;
+        border-radius: 5px;
+    }
+
+    .breadcrumb a {
+        /* Color negro */
+        color: black !important;
+        /* Quitar subrayado */
+        text-decoration: none;
+    }
+
+    .breadcrumb a:hover {
+        /* Color gris oscuro al pasar el mouse */
+        color: #555;
+        /* Subrayado solo en hover (opcional) */
+        text-decoration: underline;
+    }
 </style>
 
 <script>
@@ -131,4 +177,5 @@
         }
     });
 </script>
+
 </html>

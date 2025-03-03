@@ -92,6 +92,7 @@
             justify-content: center;
             align-items: center;
             padding: 0;            /* Sin padding para evitar brechas */
+            background-color: #f9f9f9;
         }
 
         .image-box img {
