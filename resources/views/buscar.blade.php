@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center m-4 titulo-busqueda">
-        Cuerpos en calidad de no identificados
+        <h1>Cuerpos en calidad de no identificados</h1>
     </div>
 
     <div class="container">

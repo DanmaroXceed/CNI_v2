@@ -8,6 +8,163 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>CNI - Semefo</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
+    
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+    
+        .bg-custom {
+            background-color: #efefef;
+        }
+    
+        /* NAVBAR */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: white;
+            width: 100%;
+            height: 60px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 0 20px;
+            margin-top: 20px;
+        }
+    
+        .navbar-menu button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+    
+        .navbar-logo {
+            height: 50px;
+            margin-left: 10%;
+        }
+    
+        /* CONTENIDO */
+        #contenido {
+            /* Altura total menos el navbar y el footer */
+            min-height: calc(100vh - 130px);
+            /* Espacio extra para evitar que el botón se oculte */
+            padding-bottom: 100px;
+        }
+    
+        /* FOOTER RESPONSIVO */
+        .footer {
+            background-color: white;
+            border-top: 3px solid #334d75;
+            color: #969ba0;
+            width: 100%;
+            height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            z-index: 10;
+        }
+    
+        @media (max-width: 768px) {
+            .footer {
+                /* Evita que se superponga en pantallas pequeñas */
+                position: relative;
+                height: auto;
+                padding: 15px;
+                text-align: center;
+            }
+        }
+    
+        /* ESTILOS PARA EL BOTÓN */
+        .btn-custom {
+            display: block;
+            /* Centra el botón */
+            margin: 20px auto;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            background-color: #334d75;
+            color: white;
+            border: none;
+            cursor: pointer;
+            /* Tamaño adecuado */
+            width: 200px;
+        }
+    
+        .btn-custom:hover {
+            background-color: #0056b3;
+        }
+    
+        @media (max-width: 600px) {
+            .btn-custom {
+                /* Ocupa más espacio en móviles */
+                width: 80%;
+            }
+        }
+    
+        .breadcrumb {
+            margin-top: 20px;
+            margin-left: 40px;
+            border-radius: 5px;
+        }
+    
+        .breadcrumb a {
+            /* Color negro */
+            color: black !important;
+            /* Quitar subrayado */
+            text-decoration: none;
+        }
+    
+        .breadcrumb a:hover {
+            /* Color gris oscuro al pasar el mouse */
+            color: #555;
+            /* Subrayado solo en hover (opcional) */
+            text-decoration: underline;
+        }
+    
+        #loading-screen {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                z-index: 10000;
+            }
+    
+            /* Contenido principal oculto inicialmente */
+            #main-content {
+                display: none;
+            }
+    
+            .spinner {
+                width: 50px;
+                height: 50px;
+                border: 5px solid rgba(0, 0, 0, 0.1);
+                border-top-color: #000;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+            }
+    
+            @keyframes spin {
+                from {
+                    transform: rotate(0deg);
+                }
+    
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+    </style>
 </head>
 
 <body class="bg-custom">
@@ -50,125 +207,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 </body>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
-
-    body {
-        font-family: 'Roboto', sans-serif;
-        margin: 0;
-        padding: 0;
-    }
-
-    .bg-custom {
-        background-color: #efefef;
-    }
-
-    /* NAVBAR */
-    .navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: white;
-        width: 100%;
-        height: 60px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        padding: 0 20px;
-        margin-top: 20px;
-    }
-
-    .navbar-menu button {
-        background: none;
-        border: none;
-        font-size: 1.5rem;
-        cursor: pointer;
-    }
-
-    .navbar-logo {
-        height: 50px;
-        margin-left: 10%;
-    }
-
-    /* CONTENIDO */
-    #contenido {
-        /* Altura total menos el navbar y el footer */
-        min-height: calc(100vh - 130px);
-        /* Espacio extra para evitar que el botón se oculte */
-        padding-bottom: 100px;
-    }
-
-    /* FOOTER RESPONSIVO */
-    .footer {
-        background-color: white;
-        border-top: 3px solid #334d75;
-        color: #969ba0;
-        width: 100%;
-        height: 75px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 10px;
-        position: fixed;
-        bottom: 0;
-        z-index: 10;
-    }
-
-    @media (max-width: 768px) {
-        .footer {
-            /* Evita que se superponga en pantallas pequeñas */
-            position: relative;
-            height: auto;
-            padding: 15px;
-            text-align: center;
-        }
-    }
-
-    /* ESTILOS PARA EL BOTÓN */
-    .btn-custom {
-        display: block;
-        /* Centra el botón */
-        margin: 20px auto;
-        padding: 10px 20px;
-        border-radius: 20px;
-        font-size: 16px;
-        background-color: #334d75;
-        color: white;
-        border: none;
-        cursor: pointer;
-        /* Tamaño adecuado */
-        width: 200px;
-    }
-
-    .btn-custom:hover {
-        background-color: #0056b3;
-    }
-
-    @media (max-width: 600px) {
-        .btn-custom {
-            /* Ocupa más espacio en móviles */
-            width: 80%;
-        }
-    }
-
-    .breadcrumb {
-        margin-top: 20px;
-        margin-left: 40px;
-        border-radius: 5px;
-    }
-
-    .breadcrumb a {
-        /* Color negro */
-        color: black !important;
-        /* Quitar subrayado */
-        text-decoration: none;
-    }
-
-    .breadcrumb a:hover {
-        /* Color gris oscuro al pasar el mouse */
-        color: #555;
-        /* Subrayado solo en hover (opcional) */
-        text-decoration: underline;
-    }
-</style>
 
 <script>
     document.addEventListener('contextmenu', function(event) {

@@ -176,37 +176,6 @@
             }
         }
 
-        /* Spinner de carga */
-        #loading-screen {
-            position: fixed;
-            width: 100%;
-            height: calc(100vh - 130px);
-            background-color: rgba(255, 255, 255, 0.9);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-        }
-
-        /* Animación del Spinner */
-        .spinner {
-            border: 5px solid #ccc;
-            border-top: 5px solid #334d75;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% {
-                transform: rotate(0deg);
-            }
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
         .text-muted{
             margin-right: 10px;
         }
