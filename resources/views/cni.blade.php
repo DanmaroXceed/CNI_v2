@@ -381,7 +381,7 @@
             overflow: hidden;
             /* o un ancho fijo si lo prefieres, por ejemplo: 600px; */
             width: 100%;
-            height: 350px;
+            height: auto;
             margin-top: 30px;
             margin-bottom: 30px;
         }
