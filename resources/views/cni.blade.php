@@ -291,7 +291,7 @@
             }
             html2canvas(element).then(function(canvas) {
                 var link = document.createElement('a');
-                link.download = 'captura_{{ $datos[0]->folio }}.png';
+                link.download = 'Cedula_{{ $datos[0]->folio }}.png';
                 link.href = canvas.toDataURL();
                 link.click();
             }).catch(function(error) {
