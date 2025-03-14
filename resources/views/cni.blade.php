@@ -8,7 +8,7 @@
 
     <div id="main-content">
 
-        <div class="main-container">
+        <div class="main-container" id="main-container">
             <!-- Imágenes fijas en la esquina superior derecha -->
             <div class="header-logos">
                 <img src="{{ asset('Logo de la DGSP.PNG') }}" alt="Logo 1" id="logo1">
@@ -253,7 +253,7 @@
 
         <div class="bottom-buttons">
             <button style="background-color: white; color: black;" onclick="window.history.back()">Regresar</button>
-            <button>Descargar</button>
+            <button onclick="capturarImagen()">Descargar</button>
         </div>
     </div>
 
@@ -281,6 +281,23 @@
                 });
             }
         });
+
+        function capturarImagen() {
+            var element = document.getElementById("main-container");
+            console.log("Elemento a capturar:", element); // Verifica en la consola
+            if (!element) {
+                console.error("El elemento no fue encontrado.");
+                return;
+            }
+            html2canvas(element).then(function(canvas) {
+                var link = document.createElement('a');
+                link.download = 'captura_{{ $datos[0]->folio }}.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            }).catch(function(error) {
+                console.error("Error al generar la imagen:", error);
+            });
+        }
     </script>
 
 
