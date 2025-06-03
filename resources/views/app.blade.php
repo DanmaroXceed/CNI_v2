@@ -8,6 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- Ícono clásico del navegador -->
+    <link rel="icon" type="image/png" href="{{ asset('/logoweb-1.png') }}" sizes="32x32">
+
+    <!-- Ícono para dispositivos móviles / apps -->
+    <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('/logoweb-1.png') }}">
+
+    <!-- Apple touch icon (opcional si se requiere para iOS) -->
+    <link rel="apple-touch-icon" href="{{ asset('/logoweb-1.png') }}">
+
     <title>CNI - Semefo</title>
 
     <style>
