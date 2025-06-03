@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -181,7 +183,10 @@
     <nav class="navbar">
         <img src="{{ asset('logo.png') }}" alt="Logo" class="navbar-logo">
         <div class="navbar-menu" style="margin-right: 10%;">
-            <button>☰</button>
+            <div class="d-none d-md-flex"> <!-- Ocultar en móviles y mostrar en desktop -->
+                <a href="https://www.fiscaliazacatecas.gob.mx/" class="btn btn-outline-primary me-2">Página Principal FGJEZ</a>
+                <a href="https://accesosemefo.fiscaliazacatecas.gob.mx/" class="btn btn-outline-success me-2">Acceso a SEMEFO</a>
+            </div>
         </div>
     </nav>
 
