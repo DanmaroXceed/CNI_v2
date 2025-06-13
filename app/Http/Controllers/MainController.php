@@ -26,21 +26,21 @@ class MainController extends Controller
         if ($request->filled('genero')) {
             $query->where('nomSexo', $request->input('genero'));
         }
-        if ($request->filled('nombre')) {
-            $query->where('nom', 'like', '%' . $request->input('nombre') . '%');
-        }
-        if ($request->filled('paterno')) {
-            $query->where('Paterno', 'like', '%' . $request->input('paterno') . '%');
-        }
-        if ($request->filled('materno')) {
-            $query->where('Materno', 'like', '%' . $request->input('materno') . '%');
-        }
-        if ($request->filled('anio')) {
-            $query->whereRaw("YEAR(TRY_CAST(REPLACE(REPLACE(REPLACE(REPLACE(Fecha, 'Ene', 'Jan'), 'Abr', 'Apr'), 'Ago', 'Aug'), 'Dic', 'Dec') AS datetime)) = ?", [$request->input('anio')]);
-        }
-        if ($request->filled('mes')) {
-            $query->whereRaw("MONTH(TRY_CAST(REPLACE(REPLACE(REPLACE(REPLACE(Fecha, 'Ene', 'Jan'), 'Abr', 'Apr'), 'Ago', 'Aug'), 'Dic', 'Dec') AS datetime)) = ?", [$request->input('mes')]);
-        }
+        // if ($request->filled('nombre')) {
+        //     $query->where('nom', 'like', '%' . $request->input('nombre') . '%');
+        // }
+        // if ($request->filled('paterno')) {
+        //     $query->where('Paterno', 'like', '%' . $request->input('paterno') . '%');
+        // }
+        // if ($request->filled('materno')) {
+        //     $query->where('Materno', 'like', '%' . $request->input('materno') . '%');
+        // }
+        // if ($request->filled('anio')) {
+        //     $query->whereRaw("YEAR(TRY_CAST(REPLACE(REPLACE(REPLACE(REPLACE(Fecha, 'Ene', 'Jan'), 'Abr', 'Apr'), 'Ago', 'Aug'), 'Dic', 'Dec') AS datetime)) = ?", [$request->input('anio')]);
+        // }
+        // if ($request->filled('mes')) {
+        //     $query->whereRaw("MONTH(TRY_CAST(REPLACE(REPLACE(REPLACE(REPLACE(Fecha, 'Ene', 'Jan'), 'Abr', 'Apr'), 'Ago', 'Aug'), 'Dic', 'Dec') AS datetime)) = ?", [$request->input('mes')]);
+        // }
 
         // Lógica para "Mostrar fotografías": si se envía, se filtra por 1 (Sí) o 0 (No)
         if ($request->input('mostrar-fotos') == '1') {

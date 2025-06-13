@@ -62,14 +62,14 @@
                     </div>
 
                     <div class="column-2-body">
-                        <p><strong>Fecha de levantamiento:</strong> {{ $datos[0]->fecha ?? 'no especificado' }}</p>
-                        <p><strong>Hora de levantamiento:</strong> {{ $datos[0]->hora ?? 'no especificado' }}</p>
+                        {{-- <p><strong>Fecha de levantamiento:</strong> {{ $datos[0]->fecha ?? 'no especificado' }}</p> --}}
+                        {{-- <p><strong>Hora de levantamiento:</strong> {{ $datos[0]->hora ?? 'no especificado' }}</p> --}}
                         <p><strong>Expediente:</strong> {{ $datos[0]->expediente ?? 'no especificado' }}</p>
-                        <p><strong>Lugar de intervención:</strong> {{ $datos[0]->intervencion ?? 'no especificado' }}</p>
-                        <p><strong>Municipio:</strong> {{ $datos[0]->municipio ?? 'no especificado' }}</p>
-                        <p><strong>Estado que reportó:</strong> Zacatecas</p>
+                        {{-- <p><strong>Lugar de intervención:</strong> {{ $datos[0]->intervencion ?? 'no especificado' }}</p>
+                        <p><strong>Municipio:</strong> {{ $datos[0]->municipio ?? 'no especificado' }}</p> --}}
+                        {{-- <p><strong>Estado que reportó:</strong> Zacatecas</p> --}}
                         <p><strong>Señas particulares:</strong> {{ $datos[0]->señas ?? 'no especificado' }}</p>
-                        <p><strong>Observaciones:</strong> {{ $datos[0]->observaciones ?? 'no especificado' }}</p>
+                        {{-- <p><strong>Observaciones:</strong> {{ $datos[0]->observaciones ?? 'no especificado' }}</p> --}}
                         <p><strong>Pertenencias y accesorios:</strong> {{ $datos[0]->pertenencias ?? 'no especificado' }}
                         </p>
                     </div>
@@ -89,7 +89,7 @@
                 <!-- Columna 3: Más texto y leyenda azul al final -->
                 <div class="column">
                     <div class="column-3-body">
-                        <h2 style="color: #142355; margin-bottom: 10px"><strong>Señales particulares</strong></h2>
+                        <h2 style="color: #142355; margin-bottom: 10px"><strong>Señas particulares</strong></h2>
                         <div class="two-columns">
                             <div class="column-left">
                                 <p>
