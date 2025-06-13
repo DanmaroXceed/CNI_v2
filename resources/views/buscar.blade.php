@@ -65,15 +65,15 @@
                 </div>
 
                 <!-- Fila: Nombre -->
-                <div class="form-row">
+                {{-- <div class="form-row">
                     <div class="form-group">
                         <label for="nombre">Nombre(s)</label>
                         <input type="text" id="nombre" name="nombre" />
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Fila: Apellidos -->
-                <div class="form-row">
+                {{-- <div class="form-row">
                     <div class="form-group">
                         <label for="paterno">Apellido Paterno</label>
                         <input type="text" id="paterno" name="paterno" />
@@ -82,10 +82,10 @@
                         <label for="materno">Apellido Materno</label>
                         <input type="text" id="materno" name="materno" />
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Selección de Año y Mes -->
-                <div class="form-row">
+                {{-- <div class="form-row">
                     <div class="form-group">
                         <label for="anio">Año del hallazgo</label>
                         <select id="anio" name="anio" class="custom-select">
@@ -116,7 +116,7 @@
                             <option value="12">Diciembre</option>
                         </select>
                     </div>
-                </div>
+                </div> --}}
 
                 <!-- Fila: Checkboxes -->
                 <strong>Mostrar fotografías</strong>
