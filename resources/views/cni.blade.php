@@ -314,6 +314,21 @@
             box-sizing: border-box;
         }
 
+        #main-container::before {
+            content: "Información confidencial";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-30deg); /* rotación diagonal adaptable */
+            font-size: 4vw; /* tamaño relativo al viewport, se adapta */
+            color: rgba(126, 0, 0, 0.1); /* semitransparente */
+            white-space: nowrap;
+            pointer-events: none; /* no interfiere con el contenido */
+            z-index: 0; /* detrás del contenido */
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
         /* Imágenes fijas en la esquina superior derecha */
         .header-logos {
             position: absolute;
