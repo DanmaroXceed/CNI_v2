@@ -18,7 +18,7 @@
             <div class="columns-container">
                 <!-- Columna 1: Carrusel de imágenes -->
                 <div class="column">
-                    <div class="column-1-title text-center">Cédula de CNI</div>
+                    <div class="column-1-title text-center">Cédula de PFSI</div>
 
                     <div class="carousel-container">
                         <!-- Sección de imágenes -->
@@ -76,12 +76,10 @@
 
                     <div class="column-2-footer">
                         <p>En caso de encontrar alguna similitud con la persona que busca en la base de datos, favor de
-                            presentarse en la <strong>Fiscalía Especializada para la Atención de Desaparición Forzada de
-                                Personas y
-                                Desaparición Cometida por Particulares</strong> o comunicarse al número de teléfono:
-                            <strong>492
-                                345 29 96</strong> ext.
-                            <strong>37704, 37708</strong> y <strong>37709</strong>.
+                            presentarse en la <strong>Fiscalía Especializada para la Atención de Desaparición de
+                                Personas</strong> o comunicarse al teléfono:
+                            <strong>492 156 9408</strong> ext.
+                            <strong>37704, 37708</strong> y <strong>37709</strong> o por WhatsApp al <strong>492 288 6055</strong>.
                         </p>
                     </div>
                 </div>
@@ -291,7 +289,7 @@
             }
             html2canvas(element).then(function(canvas) {
                 var link = document.createElement('a');
-                link.download = 'Cedula_{{ $datos[0]->folio }}.png';
+                link.download = 'Cedula_PFSI_{{ $datos[0]->folio }}.png';
                 link.href = canvas.toDataURL();
                 link.click();
             }).catch(function(error) {
@@ -314,20 +312,39 @@
             box-sizing: border-box;
         }
 
-        #main-container::before {
-            content: "Información confidencial";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%) rotate(-30deg); /* rotación diagonal adaptable */
-            font-size: 4vw; /* tamaño relativo al viewport, se adapta */
-            color: rgba(126, 0, 0, 0.1); /* semitransparente */
-            white-space: nowrap;
-            pointer-events: none; /* no interfiere con el contenido */
-            z-index: 0; /* detrás del contenido */
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+        //#main-container::before {
+        //    content: "F G J E Z";
+        //    position: absolute;
+        //    top: 50%;
+        //    left: 50%;
+        //    transform: translate(-50%, -50%) rotate(-30deg); /* rotación diagonal adaptable */
+        //    font-size: 4vw; /* tamaño relativo al viewport, se adapta */
+        //    color: rgba(126, 0, 0, 0.1); /* semitransparente */
+        //    white-space: nowrap;
+        //    pointer-events: none; /* no interfiere con el contenido */
+        //    z-index: 0; /* detrás del contenido */
+        //    font-weight: bold;
+        //    text-transform: uppercase;
+        //}
+/* Marca de agua con imagen */
+	#main-container::before {
+    	     content: "";
+    	     position: absolute;
+    	     top: 50%;
+    	     left: 50%;
+    	     width: 860px;              /* tamaño de la imagen */
+    	     height: 460px;
+    	     transform: translate(-50%, -50%) rotate(-30deg);
+
+    	     background-image: url("{{ asset('LogoFGJEZ_gde.png') }}");
+    	     background-repeat: no-repeat;
+    	     background-position: center;
+    	     background-size: contain;  /* o cover */
+
+    	     opacity: 0.1;              /* reemplaza el rgba */
+    	     pointer-events: none;
+      	     z-index: 0;
+	}
 
         /* Imágenes fijas en la esquina superior derecha */
         .header-logos {

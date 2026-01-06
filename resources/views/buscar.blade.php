@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="text-center m-4 titulo-busqueda">
-        <h1>Cuerpos en calidad de no identificados</h1>
+        <h1>Personas Fallecidas Sin Identificar (PFSI)</h1>
     </div>
 
     <div class="container">
@@ -10,8 +10,8 @@
         <div class="left-box">
             <p class="left-box-message">
                 Consulta la Base de Datos de
-                Occisos No Identificados y/o
-                sin Reclamar de la Dirección
+                Personas Fallecidas Sin
+		Identificar (PFSI) de la Dirección
                 General de Servicios Periciales
                 de Fiscalía General de Justicia
                 del Estado de Zacatecas

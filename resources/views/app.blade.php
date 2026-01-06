@@ -19,7 +19,7 @@
     <!-- Apple touch icon (opcional si se requiere para iOS) -->
     <link rel="apple-touch-icon" href="{{ asset('/logoweb-1.png') }}">
 
-    <title>CNI - Semefo</title>
+    <title>PFSI - Semefo</title>
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
@@ -185,7 +185,7 @@
         <div class="navbar-menu" style="margin-right: 10%;">
             <div class="d-none d-md-flex"> <!-- Ocultar en móviles y mostrar en desktop -->
                 <a href="https://www.fiscaliazacatecas.gob.mx/" class="btn btn-outline-primary me-2">Página Principal FGJEZ</a>
-                <a href="https://accesosemefo.fiscaliazacatecas.gob.mx/" class="btn btn-outline-success me-2">Acceso a SEMEFO</a>
+                <a href="https://accesosemefo.fiscaliazacatecas.gob.mx/" class="btn btn-outline-success me-2">Acceso a Personas Fallecidas</a>
             </div>
         </div>
     </nav>
